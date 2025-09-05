@@ -1,17 +1,19 @@
 package com.yonni.raquettelover.service;
 
-import com.yonni.raquettelover.DTO.PlaceDTO;
-import com.yonni.raquettelover.DTO.ReservationDTO;
-import com.yonni.raquettelover.entity.*;
-import com.yonni.raquettelover.repository.*;
-import com.yonni.raquettelover.security.CustomUserDetails;
-import com.yonni.raquettelover.security.SecurityUtils;
-import lombok.RequiredArgsConstructor;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
+import com.yonni.raquettelover.dto.ReservationDto;
+import com.yonni.raquettelover.entity.Court;
+import com.yonni.raquettelover.entity.Reservation;
+import com.yonni.raquettelover.entity.User;
+import com.yonni.raquettelover.repository.CourtRepository;
+import com.yonni.raquettelover.repository.ReservationRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +24,7 @@ public class ReservationServiceImpl implements ReservationService {
     private final ReservationRepository reservationRepository;
 
     @Override
-    public void addReservation(ReservationDTO dto) {
+    public void addReservation(ReservationDto dto) {
 
         Optional<Court> courtOpt = courtRepository.findById(dto.courtId());
         if (courtOpt.isEmpty()) {

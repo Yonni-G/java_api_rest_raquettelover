@@ -1,21 +1,21 @@
 package com.yonni.raquettelover.service;
 
-import com.yonni.raquettelover.DTO.CourtDTO;
-import com.yonni.raquettelover.DTO.PlaceDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.yonni.raquettelover.dto.CourtDto;
 import com.yonni.raquettelover.entity.Court;
 import com.yonni.raquettelover.entity.Place;
 import com.yonni.raquettelover.entity.User;
-import com.yonni.raquettelover.entity.UserPlace;
 import com.yonni.raquettelover.repository.CourtRepository;
 import com.yonni.raquettelover.repository.PlaceRepository;
 import com.yonni.raquettelover.repository.UserPlaceRepository;
 import com.yonni.raquettelover.repository.UserRepository;
 import com.yonni.raquettelover.security.CustomUserDetails;
 import com.yonni.raquettelover.security.SecurityUtils;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +27,7 @@ public class CourtServiceImpl implements CourtService {
     private final CourtRepository courtRepository;
 
     @Override
-    public void addCourt(CourtDTO dto) {
+    public void addCourt(CourtDto dto) {
 
         CustomUserDetails principal = SecurityUtils.getCurrentUser();
 

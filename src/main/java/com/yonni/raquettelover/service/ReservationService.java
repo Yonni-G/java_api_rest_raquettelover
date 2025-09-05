@@ -1,10 +1,10 @@
 package com.yonni.raquettelover.service;
 
-import com.yonni.raquettelover.DTO.CourtDTO;
-import com.yonni.raquettelover.DTO.ReservationDTO;
 import org.springframework.stereotype.Service;
+
+import com.yonni.raquettelover.dto.ReservationDto;
 
 @Service
 public interface ReservationService {
-    public void addReservation(ReservationDTO dto);
+    public void addReservation(ReservationDto dto);
 }

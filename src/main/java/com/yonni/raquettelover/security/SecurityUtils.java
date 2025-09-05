@@ -1,17 +1,16 @@
 package com.yonni.raquettelover.security;
 
-import com.yonni.raquettelover.entity.User;
-import com.yonni.raquettelover.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-@RequiredArgsConstructor
+
 public class SecurityUtils {
 
-    private final UserRepository userRepository;
+    private SecurityUtils() {
+        // Constructeur privé pour empêcher l'instanciation
+    }
     public static boolean isAdmin(UserDetails userDetails) {
         if (userDetails == null) {
             return false;

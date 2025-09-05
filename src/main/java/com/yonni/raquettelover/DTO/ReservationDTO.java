@@ -1,14 +1,12 @@
-package com.yonni.raquettelover.DTO;
-
-import com.yonni.raquettelover.enumeration.CourtType;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+package com.yonni.raquettelover.dto;
 
 import java.time.LocalDate;
 
-public record ReservationDTO(
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+public record ReservationDto(
         @NotNull(message = "La date de réservation est obligatoire")
         LocalDate reservationAt,
 

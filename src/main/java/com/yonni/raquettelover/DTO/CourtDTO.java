@@ -1,10 +1,10 @@
-package com.yonni.raquettelover.DTO;
+package com.yonni.raquettelover.dto;
 
 import com.yonni.raquettelover.enumeration.CourtType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record CourtDTO(
+public record CourtDto(
         @NotBlank(message = "Le nom est obligatoire")
         String name,
         @NotBlank(message = "La description est obligatoire")

@@ -1,4 +1,4 @@
-package com.yonni.raquettelover.DTO;
+package com.yonni.raquettelover.dto;
 
-public record UserPlaceDTO(Long userId, Long placeId) {
+public record UserPlaceDto(Long userId, Long placeId) {
 }

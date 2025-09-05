@@ -1,10 +1,8 @@
-package com.yonni.raquettelover.DTO;
+package com.yonni.raquettelover.dto;
 
-import com.yonni.raquettelover.enumeration.CourtType;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
-public record PlaceDTO(
+public record PlaceDto(
         // pour l'admin, l'id du gestionnaire auquel on veut ajouter le lieu
         Long userId,
         @NotBlank(message = "Le nom est obligatoire")

@@ -1,11 +1,10 @@
 package com.yonni.raquettelover.service;
 
-import com.yonni.raquettelover.DTO.PlaceDTO;
-import com.yonni.raquettelover.security.CustomUserDetails;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
+
+import com.yonni.raquettelover.dto.PlaceDto;
 
 @Service
 public interface PlaceService {
-    public void addPlace(PlaceDTO dto);
+    public void addPlace(PlaceDto dto);
 }
