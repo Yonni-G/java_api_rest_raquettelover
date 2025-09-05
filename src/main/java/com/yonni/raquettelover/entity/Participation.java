@@ -13,6 +13,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +35,10 @@ public class Participation {
     @Size(max = 50)
     private String firstName;
 
-    @Email(message = "L'email doit être valide")
+    @Pattern(
+            regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            message = "L'adresse email doit être valide"
+    )
     private String email;
 
     @Size(min = 10, max = 10, message = "Le numéro de téléphone doit contenir exactement 10 chiffres")

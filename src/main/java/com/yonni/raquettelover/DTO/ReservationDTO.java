@@ -3,6 +3,7 @@ package com.yonni.raquettelover.dto;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -25,6 +26,7 @@ public record ReservationDto(
         Long courtId,
         Long userId, // organisateur de la réservation
         // au moment de la réservation, le joueur peut ajouter des invités (optionnel)
+        @Valid
         List<GuestDto> guests
 ) {
 }

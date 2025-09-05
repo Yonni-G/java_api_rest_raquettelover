@@ -1,12 +1,18 @@
 package com.yonni.raquettelover.dto;
 
 import com.yonni.raquettelover.enumeration.CourtType;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 public record GuestDto(
+        @Size(max = 50)
         String firstName,
+        // on ajoute une contrainte regex pour l'email
+        @Pattern(
+                regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                message = "L'adresse email doit être valide"
+        )
         String email,
+        @Size(min = 10, max = 10, message = "Le numéro de téléphone doit contenir exactement 10 chiffres")
         String phoneNumber) {
 }
 

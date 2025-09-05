@@ -1,14 +1,14 @@
 services:
-#  app:
-#    build: .
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - db
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/exampledb
-#      - SPRING_DATASOURCE_USERNAME=example
-#      - SPRING_DATASOURCE_PASSWORD=password
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/exampledb
+      - SPRING_DATASOURCE_USERNAME=example
+      - SPRING_DATASOURCE_PASSWORD=password
 #    volumes:
 #      - .:/app
   db:
