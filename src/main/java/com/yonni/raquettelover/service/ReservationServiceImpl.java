@@ -2,6 +2,8 @@ package com.yonni.raquettelover.service;
 
 import java.util.Optional;
 
+import com.yonni.raquettelover.dto.ParticipationGuestDto;
+import com.yonni.raquettelover.dto.ParticipationPlayerDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class ReservationServiceImpl implements ReservationService {
 
     private final UserService userService;
+    private final ParticipationService participationService;
     private final CourtRepository courtRepository;
     private final ReservationRepository reservationRepository;
 
@@ -40,7 +43,27 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setStartHour(dto.startHour());
         reservation.setDuration(dto.duration());
 
-        reservationRepository.save(reservation);
+        Reservation reservationNew = reservationRepository.save(reservation);
+
+        // on ajoute le joueur qui réserve en tant que participant
+        ParticipationPlayerDto participationPlayerDto = new ParticipationPlayerDto(
+                reservationNew.getId(),
+                user.getId()
+        );
+        participationService.addParticipation(participationPlayerDto);
+
+        // on ajoute les invités si présents dans le dto
+        // on boucle sur la liste dto.guests()
+        if (dto.guests() != null) {
+            dto.guests().forEach(guestDto -> {
+                ParticipationGuestDto participationGuestDto = new ParticipationGuestDto(
+                        guestDto,
+                        reservationNew.getId(), // on associe l'invité à la réservation créée
+                        user.getId()
+                );
+                participationService.addParticipation(participationGuestDto);
+            });
+        }
     }
 
 }

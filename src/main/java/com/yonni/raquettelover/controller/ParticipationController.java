@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.yonni.raquettelover.dto.ParticipationDto;
+import com.yonni.raquettelover.dto.ParticipationGuestDto;
 import com.yonni.raquettelover.service.ParticipationService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/participation") // Sans /api/v1, car context-path déjà /api/v1
+@RequestMapping("/participation")
 @RequiredArgsConstructor
 public class ParticipationController {
 
@@ -26,7 +26,7 @@ public class ParticipationController {
     @PostMapping
     @PreAuthorize("hasRole('ADMIN') or #dto.userId == principal.id")
     public ResponseEntity<?> addParticipation(
-            @RequestBody @Valid ParticipationDto dto,
+            @RequestBody @Valid ParticipationGuestDto dto,
             BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
@@ -35,7 +35,7 @@ public class ParticipationController {
 
         participationService.addParticipation(dto);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("Réservation créée avec succès");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Participation créée avec succès");
     }
 
 }

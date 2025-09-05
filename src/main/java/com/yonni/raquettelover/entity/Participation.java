@@ -32,13 +32,13 @@ public class Participation {
     private Long id;
 
     @Size(max = 50)
-    private String name;
+    private String firstName;
 
     @Email(message = "L'email doit être valide")
     private String email;
 
     @Size(min = 10, max = 10, message = "Le numéro de téléphone doit contenir exactement 10 chiffres")
-    private String phone;
+    private String phoneNumber;
 
     @ManyToOne
     @JoinColumn(name = "reservation_id", nullable = false)

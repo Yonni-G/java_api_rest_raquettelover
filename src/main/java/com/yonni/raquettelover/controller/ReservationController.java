@@ -1,5 +1,6 @@
 package com.yonni.raquettelover.controller;
 
+import com.yonni.raquettelover.service.ParticipationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class ReservationController {
 
     private final ReservationService reservationService;
+    private final ParticipationService participationService;
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN') or #dto.userId == principal.id")
@@ -33,6 +35,7 @@ public class ReservationController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Données invalides");
         }
 
+        // on ajoute la réservation
         reservationService.addReservation(dto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Réservation créée avec succès");

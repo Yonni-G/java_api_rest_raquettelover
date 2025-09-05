@@ -1,6 +1,7 @@
 package com.yonni.raquettelover.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -22,8 +23,9 @@ public record ReservationDto(
 
         @NotNull(message = "L'ID du court est obligatoire")
         Long courtId,
-        // pour l'admin, l'id de l'utilisateur pour lequel on crée la réservation
-        Long userId
+        Long userId, // organisateur de la réservation
+        // au moment de la réservation, le joueur peut ajouter des invités (optionnel)
+        List<GuestDto> guests
 ) {
 }
 

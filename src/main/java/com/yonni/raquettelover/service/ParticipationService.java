@@ -1,10 +1,11 @@
 package com.yonni.raquettelover.service;
 
+import com.yonni.raquettelover.dto.ParticipationGuestDto;
+import com.yonni.raquettelover.dto.ParticipationPlayerDto;
 import org.springframework.stereotype.Service;
-
-import com.yonni.raquettelover.dto.ParticipationDto;
 
 @Service
 public interface ParticipationService {
-    public void addParticipation(ParticipationDto dto);
+    public void addParticipation(ParticipationPlayerDto dto);
+    public void addParticipation(ParticipationGuestDto dto);
 }
