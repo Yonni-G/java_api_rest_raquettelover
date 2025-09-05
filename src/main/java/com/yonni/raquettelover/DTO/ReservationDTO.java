@@ -1,0 +1,31 @@
+package com.yonni.raquettelover.DTO;
+
+import com.yonni.raquettelover.enumeration.CourtType;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+
+public record ReservationDTO(
+        @NotNull(message = "La date de réservation est obligatoire")
+        LocalDate reservationAt,
+
+        @NotNull(message = "L'heure de début est obligatoire")
+        @Min(value = 0, message = "L'heure de début doit être comprise entre 0 et 23")
+        @Max(value = 23, message = "L'heure de début doit être comprise entre 0 et 23")
+        Integer startHour,
+
+        @NotNull(message = "La durée est obligatoire")
+        @Min(value = 1, message = "La durée minimale est d'une heure")
+        @Max(value = 24, message = "La durée maximale est de 24 heures")
+        Integer duration,
+
+        @NotNull(message = "L'ID du court est obligatoire")
+        Long courtId,
+        // pour l'admin, l'id de l'utilisateur pour lequel on crée la réservation
+        Long userId
+) {
+}
+
